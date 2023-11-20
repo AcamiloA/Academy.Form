@@ -1,0 +1,23 @@
+.table{
+    width: 100%;    
+}
+
+
+.delete{
+    cursor: pointer;
+    color: red
+}
+
+.edit{
+    cursor: pointer;
+    color: green
+}
+
+.search{
+    cursor: pointer;
+}
+
+.add{
+    cursor: pointer;
+    color: green
+}

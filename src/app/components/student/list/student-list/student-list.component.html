@@ -1,0 +1,59 @@
+<div class="title">
+    <h1>Listado de estudiantes</h1>
+</div>
+
+<div class="container">
+  <mat-form-field>
+    <mat-label>Filtro</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Buscar" #input>
+  </mat-form-field>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>        
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>   
+        <ng-container matColumnDef="username">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Usuario </th>
+          <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+        </ng-container>    
+        <ng-container matColumnDef="firstName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+          <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+        </ng-container>   
+        <ng-container matColumnDef="lastName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Apellido </th>
+          <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+        </ng-container>   
+        <ng-container matColumnDef="age">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Edad </th>
+          <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+        </ng-container>   
+        <ng-container matColumnDef="career">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Profesión </th>
+          <td mat-cell *matCellDef="let element"> {{element.career}} </td>
+        </ng-container>   
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>
+            <button routerLink="/AgregarEstudiante" mat-mini-fab color="white" >
+              <mat-icon  fontIcon="add" class="add" matTooltip="Agregar estudiante"></mat-icon>
+            </button>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <mat-icon routerLink="/VerEstudiante/{{ element.id }}" aria-hidden="false" class="search" fontIcon="search" matTooltip="Ver estudiante"></mat-icon>
+            <mat-icon routerLink="/EditarEstudiante/{{ element.id }}" aria-hidden="false" class="edit" fontIcon="edit_note" matTooltip="Editar estudiante"></mat-icon>
+            <mat-icon (click)="deleteStudent(element.id)" aria-hidden="false" class="delete" fontIcon="delete-forever" matTooltip="Eliminar estudiante"></mat-icon>
+            
+          </td>
+        </ng-container>  
+        
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements">
+    </mat-paginator>
+</div>
+
+
