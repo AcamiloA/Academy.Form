@@ -55,7 +55,7 @@ export class StudentEditComponent implements OnInit {
         firstname: data.firstName,
         lastname: data.lastName,
         age: data.age,
-        career: data.career,
+        career: data.career, 
       })
       this.loading = false;
     })
